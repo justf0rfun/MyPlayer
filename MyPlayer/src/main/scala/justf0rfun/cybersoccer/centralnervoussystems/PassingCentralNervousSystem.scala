@@ -15,7 +15,7 @@ trait PassingCentralNervousSystem extends KickingCentralNervousSystem {
 
 	protected def passTo(someBody: Body) = {
 //		val passTargetPoint = someBody.location
-		peripheralNervousSystem.kickBall(new Kick(new Vector(new LineSegment(ball.location, someBody.location).angle, body.kickForceMaximum * .8)))
+		peripheralNervousSystem.kickBall(new Kick(Vector.createPolarVector(new LineSegment(ball.location, someBody.location).angle, body.kickForceMaximum * .8)))
 //		kickBall(passTargetPoint: Point) //= if (isBallInRange) peripheralNervousSystem.kickBall(new Kick(new LineSegment(ball.location, targetPoint).angle, matchConfiguration.kickForceMaximum)) else throw new RuntimeException("Kick to %s impossible, because ball is out of range.".format(targetPoint))
 	}
 

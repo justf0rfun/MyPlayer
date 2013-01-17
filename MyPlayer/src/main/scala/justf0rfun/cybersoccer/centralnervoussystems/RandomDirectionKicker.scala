@@ -9,7 +9,7 @@ class RandomDirectionKicker(peripheralNervousSystem: PeripheralNervousSystem) ex
 
 	override def think = {
 		if (isBallInRange) {
-			kickBall(new Vector(Angle.createByDegree(Random.nextDouble() * 360), body.kickForceMaximum))
+			kickBall(Vector.createPolarVector(Angle.createByDegree(Random.nextDouble() * 360), body.kickForceMaximum))
 		} else {
 			moveTo(ball.location)
 		}

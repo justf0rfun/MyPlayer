@@ -17,7 +17,7 @@ trait MovingCentralNervousSystem extends SensoringCentralNervousSystem {
 	}
 
 	protected def moveInRandomDirection = {
-		move(new Vector(Angle.createByDegree(Random.nextDouble() * 360), body.velocityMaximum))
+		move(Vector.createPolarVector(Angle.createByDegree(Random.nextDouble() * 360), body.velocityMaximum))
 	}
 	
 	protected def moveToBall = moveTo(ball.location)
@@ -62,7 +62,7 @@ trait MovingCentralNervousSystem extends SensoringCentralNervousSystem {
 
 	protected def formationAroundBall(distance: Double) = formationAroundPoint(distance, ball.location)
 
-	protected def formationAroundPoint(distance: Double, referencePoint: Point) = if (isNearestTeamMemberToBall) moveToBall else moveTo( new Vector(Angle.createByDegree((360 / numberOfTeamMembers) * body.index), distance).point(referencePoint))
+	protected def formationAroundPoint(distance: Double, referencePoint: Point) = if (isNearestTeamMemberToBall) moveToBall else moveTo( Vector.createPolarVector(Angle.createByDegree((360 / numberOfTeamMembers) * body.index), distance).point(referencePoint))
 
 	protected def formationAroundTeamMemberNearestToBall(distance: Double) = formationAroundPoint(distance, nearestTeamMemberToBall match { case Some(teamMember) => teamMember.location })
 	
